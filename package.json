@@ -1,0 +1,32 @@
+{
+  "name": "practicereact",
+  "version": "1.0.0",
+  "description": "This is react appby Deepak",
+  
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepakGupta1007/PracticeReact.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Deepak Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeepakGupta1007/PracticeReact/issues"
+  },
+  "homepage": "https://github.com/DeepakGupta1007/PracticeReact#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+
+  
+}

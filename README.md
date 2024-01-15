@@ -72,4 +72,47 @@ Refer browseslist.
 //   "Last 2 firebox versions"
 // }
 
+Episode-3
+1. How to add scripts in projects ?
 
+"start": "parcel index.html",
+"build": "parcel build index.html"
+Used to run project for beginners, npm run 'script_key'
+2. React.createElement creates a JS Object,when we render this to DOM then it becomes HTML Element.
+3. JSX- Java Script Syntax comes into the picture after the long code used from the below approach.
+Example- Below code is not readable.
+const heading = React.createElement("h1",{id: "heading"},"Deepak Gupta");
+const root= ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+4. JSX is not a HTML inside Js,it is html like syntax.JSX is not react.Parcel is doing job behind the scenes.
+
+JSX code is transpiled before it reaches JS engine.JS Engine supports Tranpiled code.Transpile is done by parcel- to be specific Bebel (package is installed at the time of package.)
+
+5. Babel is a js compiler.
+
+//React.createElement =>ReactElement JS Object=> HTML Element(render)
+//JSX code=>Babel tranpiles it to React.createElement =>JS Object=> HTML Element.
+JSX is React.createElement at EOD.
+ 
+ #Try Babe
+ Properties of JSX-
+ //JSX-This is not HTML,let's put example of class and className for JSX.
+//JSX- Attributes in JSX needs to be in camelcase.l
+
+6. What is component?
+There are two types components-
+a. Class Based compnents- Old way 
+b. Functional Based components- New Way
+A Javascript normal function which returns some JSX.
+
+7. Component Composition
+ Nesting compnents- composing two component into one another.
+
+ 8. A component cannot be called before initialization because it is concept of hoisting- cannot call const variable before initialization. 
+
+ 9. How to render components?
+
+    1. <HeadingComponent />
+    2. <HeadingComponent>
+       </HeadingComponent>
+10. 

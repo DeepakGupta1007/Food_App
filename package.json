@@ -4,7 +4,9 @@
   "description": "This is react appby Deepak",
   
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,7 @@
   "devDependencies": {
     "parcel": "^2.11.0",
     "process": "^0.11.10"
-  },
+  }
 
   
 }

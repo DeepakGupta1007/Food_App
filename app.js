@@ -1,77 +1,229 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client';
+import "/index.css"
+//Food ordering website
+/*Components--
+Header
+    -Logo
+    -Navbar
+Body
+    -Search component
+    -Restaurant container
+        -Restaurant card
+            -Img
+            -Name
+            -Star
+            -Cuisines
+            -Time of delivery
+Footer
+    -Copyright
+    -Links
+    -Address
+    -Contact
 
-// ReactElement- Equivalent to DOM elements
+    A component is a function that returns a JSX object.
+*/
+//Another way of using CSS -Known as Inline CSS in react
+const styleCard= {
+    //Can also replace in place of call
+    // backgroundColor:"grey",
+};
 
-//JSX-This is not HTML,let's put example of class and className for JSX.
-//JSX- Attributes in JSX needs to be in camelcase.
-//JSX need to be write in parenthesis in case of multiline.
-//Javascript engine/browser does not understand JSX, JS Engine supports ECMA Script"(ES6). 
-//console.log(jsxHeading);
-// const heading = React.createElement("h1",{id: "heading"},"Deepak Gupta");
-// console.log(heading);
-
-//JSX React Eleemnt -Objects
-const jsxHeading= (
-<h1 id="heading">Deepak Gupta using jsxHeading
-</h1>
-);
-const elem = <span>React Span Test</span>
-
-
-//Functional Component
-const HeadingComponent =()=>{
+//Components
+const Header= ()=>{
     return (
-        <div id ="container">
-        <h4 className = "Heading" id="heading">
-            Deepak Gupta Functional Component 
-        </h4>
+        <div className='header'>
+            <div className='logo-container'>
+                <img src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png" className="image-resize"/>
+            </div>
+            <div className='nav-items'>
+                <ul>
+                    <li>
+                        Home
+                    </li>
+                    <li>
+                        About Us
+                    </li>
+                    <li>
+                        Contact Us
+                    </li>
+                    <li>
+                        Cart
+                    </li>
+                </ul>
+            </div>
         </div>
     )
-};
-
-// const HeadingComponentAlternate =()=> <h1>Deepak Gupta Functional Component</h1>
-
-//Can also write like this-
-const Title = function(){
-    return (
-        <>
-        {
-            //Can also write React.createElement
-            //Can write any java script code in this area
+}
+//Dummy Data
+const dataObj={
+        "info": {
+          "id": "359058",
+          "name": "Pizza Hut",
+          "cloudinaryImageId": "2b4f62d606d1b2bfba9ba9e5386fabb7",
+          "locality": "Vinayak Nagar",
+          "areaName": "Yelahanka",
+          "costForTwo": "₹300 for two",
+          "cuisines": [
+            "Pizzas"
+          ],
+          "avgRating": 3.8,
+          "parentId": "721",
+          "avgRatingString": "3.8",
+          "totalRatingsString": "1K+",
+          "sla": {
+            "deliveryTime": 29,
+            "lastMileTravel": 2.8,
+            "serviceability": "SERVICEABLE",
+            "slaString": "29 mins",
+            "lastMileTravelString": "2.8 km",
+            "iconType": "ICON_TYPE_EMPTY"
+          }
         }
-        <h1>Deepak Inside Functional Componet Way of writing</h1>
-        </>
-    )
-};
-//Try another component with JS Object and exprssion
-const Number =1000;
-const TitleComponent = ()=>{
+    };
+    //List of Dummy Data
+const listObj=[
+    {
+          "card": {
+            "info": {
+              "id": "1231249",
+              "name": "Veg Manchurian",
+              "category": "Starters",
+              "cloudinaryImageId": "rtwur61geujfywo0xs0h",
+              "isVeg": 1,
+              "price": 14000,
+              "ratings": {
+                "aggregatedRating": {
+                  "rating": "4.5",
+                  "ratingCount": "13 ratings",
+                  "ratingCountV2": "13"
+                }
+              }
+            },
+        }
+    },
+    {
+          "card": {
+            "info": {
+              "id": "1231250",
+              "cloudinaryImageId": "rtwur61geujfywo0xs0h",
+              "name": "Gobi Manchurian",
+              "category": "Starters",
+              "imageId": "oovcmyi2pbchv3ue5xmz",
+              "isVeg": 1,
+              "price": 14000,
+              "ratings": {
+                "aggregatedRating": {
+                  "rating": "3.3",
+                  "ratingCount": "50 ratings",
+                  "ratingCountV2": "50"
+                }
+              }
+            },
+        }
+    },
+    {
+          "card": {
+            "info": {
+                "cloudinaryImageId": "rtwur61geujfywo0xs0h",
+              "id": "13959307",
+              "name": "Chilli Gobi",
+              "category": "Starters",
+              "isVeg": 1,
+              "price": 14000,
+              "ratings": {
+                "aggregatedRating": {
+                    "rating": "3.3",
+                    "ratingCount": "50 ratings",
+                    "ratingCountV2": "50"
+                }
+              }
+            },
+        }
+    },
+    {
+          "card": {
+            "info": {
+              "cloudinaryImageId": "rtwur61geujfywo0xs0h",
+              "id": "1231251",
+              "name": "Baby corn Chilli Pepper",
+              "category": "Starters",
+              "isVeg": 1,
+              "price": 14000,
+              "ratings": {
+                "aggregatedRating": {
+                  "rating": "3.9",
+                  "ratingCount": "6 ratings",
+                  "ratingCountV2": "6"
+                }
+              }
+            }
+        }
+    }
+];
+//Old one
+// const RestaurantCard=(data)=>{
+//     console.log(data);
+//     const {name,cuisines} = data;
+//     return (
+//         <div className="res-card" style ={styleCard}>
+//             <img className="restaurant-logo" 
+//             src="https://img.freepik.com/free-photo/vertical-shot-traditional-indian-paneer-butter-masala-cheese-cottage-curry-black-surface_181624-32001.jpg?size=200&ext=png" alt='Not Found'></img>
+//             <h3>{data.name ? data.name : "Unknown"}</h3>
+//             <h4>{cuisines ? cuisines : "Unknown"}</h4>
+//             <h4>4.4 Stars</h4>
+//             <h4>ETA:38min</h4>
+//         </div>
+//     )
+// }
+const RestaurantCard=(data)=>{
+    const {resData} = data;
+    const {
+        cloudinaryImageId,
+        name,
+        price,
+        ratings
+    } = resData?.card?.info;
+    const {
+        rating,
+        ratingCount
+    }=ratings?.aggregatedRating;
     return (
-        <>
-        {elem}
-        <h2>{Number*100}</h2>
-        {jsxHeading}
-        <h1>
-            Deepak Designing Title
-        </h1>
-        <HeadingComponent />
-        <HeadingComponent ></HeadingComponent>
-        {HeadingComponent()}
-        </>
-
+        <div className="res-card" style ={styleCard}>
+            <img className="restaurant-logo" 
+            src={
+                "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId}
+            alt='Not Found'></img>
+            <h3>{name ? name : "Unknown"}</h3>
+            <h6>{price ? price : "Unknown"}</h6>
+            <h6>{rating} Stars</h6>
+            <h6>{ratingCount}</h6>
+        </div>
     )
-};
-//This is known as component composition -composing two component into one another.
+}
 
+const Body = ()=>{
+    return (
+    <div className="body">
+        <div className='search'>
+            Search
+        </div>
+        <div className='restaurant-container'>
+            {/* <RestaurantCard 
+            resData={dataObj}/> */}
+            {listObj.map((data => (<RestaurantCard resData={data} key={data.card.info.id}></RestaurantCard>)))}
+        </div>
+    </div>
+    )
+}
+const AppLayout =()=>{
+    return(
+        <div className='app'>
+            <Header></Header>
+            <Body></Body>
+        </div>
+    )
+}
 
-
-
-
-const root= ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading);
-//Cannot render like this
-//root.render(HeadingComponent);
-
-//Render like this
-root.render(<TitleComponent/>);
+const root= ReactDOM.createRoot(document.getElementById('root'));
+root.render(<AppLayout></AppLayout>);

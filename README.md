@@ -115,4 +115,47 @@ A Javascript normal function which returns some JSX.
     1. <HeadingComponent />
     2. <HeadingComponent>
        </HeadingComponent>
-10. 
+
+
+Episode -4
+11. Props in React:
+Props is a way to pass a data to a component.
+A functional component is a normal JS function that returns a JS Object.
+Props are just normal arguments to a function.
+//This is known as passing props to a component. Prop is basically object
+      <RestaurantCard 
+      name="Agarwal Sweets" 
+      cuisines="Paneer,Spicy,Teekha"/>
+
+12. Destructing in react of props 
+This is not specifically for react, this is the concept of Javascript.
+a. This is a simple type to pass data
+const RestaurantCard=(data)=>{
+    console.log(data);
+    return (
+        <div className="res-card">
+            <h3>{data.name ? data.name : "Unknown"}</h3>
+            <h4>{data.cuisines ? data.cuisines : "Unknown"}</h4>
+            <h4>4.4 Stars</h4>
+            <h4>ETA:38min</h4>
+        </div>
+    )
+}
+b. This can also done in another way-
+const RestaurantCard=({name,cuisines})=>{
+    console.log(data);
+    return (
+        <div className="res-card">
+            <h3>{name}</h3>
+            <h4>{cuisines}</h4>
+            <h4>4.4 Stars</h4>
+            <h4>ETA:38min</h4>
+        </div>
+    )
+}
+
+13. Config Driven UI
+Means UI is drived by config , server dependent.
+
+14.Application of key in case of map to avoid rerendering.
+Should never use index as a key(not recommended )

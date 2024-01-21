@@ -1,12 +1,33 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import RestaurantCard from "./RestaurantCard"
 import listOfRest from "../utils/mockData"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 
 
 
 const Body = ()=>{
-    const [listData, setData] = useState(listOfRest);
+    const [listData, setData] = useState([]);
+
+    useEffect(()=>{
+        fetchData();        
+    },[]);
+
+
+    const fetchData = async ()=>{
+        const data = await fetch(
+             "https://www.swiggy.com/mapi/homepage/getCards?lat=28.6034877&lng=77.348575"
+        );
+
+        const json =await data.json();
+        setData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        // console.log(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+    }
+
+    if(listData.length===0){
+        return (
+        <h1>Loading..</h1>
+        );
+    }
     return (
     <div className="body">
         <div className='search'>
@@ -26,7 +47,7 @@ const Body = ()=>{
             </button>
         </div>
         <div className='restaurant-container'>
-            {listData.map((data => (<RestaurantCard resData={data} key={data.card.info.id}></RestaurantCard>)))}
+            {listData.map(((data,index) => (<RestaurantCard resData={data} key={index}></RestaurantCard>)))}
         </div>
     </div>
     )

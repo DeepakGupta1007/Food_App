@@ -1,99 +1,45 @@
-Episode -5
-1. General practice- There should be a folder src where all the files should be.->Common convention
+Episode -6
 
-2. Projct Structure-
-//Food ordering website
-/*Components--
-Header
-    -Logo
-    -Navbar
-Body
-    -Search component
-    -Restaurant container
-        -Restaurant card
-            -Img
-            -Name
-            -Star
-            -Cuisines
-            -Time of delivery
-Footer
-    -Copyright
-    -Links
-    -Address
-    -Contact
+1. Monolith architecture-
+Earlier , apps was developed using monolithic architecture.
+Means- Authentication code, db connectivity, api, Ui all written inside one.
+If need a single change, we have to build and deploy this whole project.
+Thats costly.
 
-    A component is a function that returns a JSX object.
-*/
+2. Microservice architecture
 
-3. By the end, parcel combines all the code to a single file.
-File module in React project.(Must visit).
+Everything in separate project-
+Like service for UI, SMS , Auth,Db connectivity
+
+a. How do these services interact with each other?
+UI talks to backend which talks to db , auth.
+
+The react project that we are making is a microservice written in react. 
+One more advantage of using microservice that, each service can have separate language.
+All these services run on their specific ports.
+All these ports can be mapped to a domain.
+Example- /sms, /api
+
+3. How react application will interact with the API s? This was covered in this episode.
 
 
-4. Some give components files extension to .js or .jsx.
+4. How to fetch data from API?
+There are two ways that can be followed-
+a. When app loads,make an api call , wait for data and when we will get the data then we render the UI.
+
+Loads-----> API Calls-----> Render UI
+b.As soon as page loads , we will just render the ui,now will make an api call as sson as we will get the result , we will now rerender the app from the data we will get from API.
 
 
-5. For any component to import we need to export that file.
+Page loads----->Render whatever we have----->API---->Re-render the Page
+Always prefer second approach,this gives better UX. Number of rendering a page occurs does not matter, because rect renders UI very fast.
+5. useEffect Hook- Based on second approach
+There are two arguments needed by useEffect(), that is arrow function and dependency array. Arrow function is a callback function.
 
-6. import Body from './components/Body';
-same as
-import Body from './components/Body.js';
+When component will be rendered successfully, after rendering it will quickly call callback function, if dependency array is empty.
 
-7. Never keep your data in component file.
-8. Never ever keep hardcoded thing in Component file.
-9. Components file name should be in upper case.
-10. There are two types of export 
-Default and Named
-Only one file have one default export.
-A module cannot have multiple default exports.
+6. fetch() method is provided by JS Engine.
 
-a. default export/import
-export default Body;
-import Body from './components/Body';
+Swiggy API can be seen in network tab ad from there.
 
-b. named export/import
-export const Component;
-import {Component} from "path"
-
-11. Can i use named export with default export?
-
-12. React is faster due to DOM manipulation.
-
-13. State variable is a super powerful variable.React element is a plain js function.
-
-14. Hooks
-A hook is just a normal js function provided by react with some superpower.
-
-a. useState() =>Superpowerful state varibles in React, Naming convention-[varName,setvarName]
-b. useEffect()
-
-c. useRef()
-d. useCallback()
-e. useMemo()
-
-
-
-"Whenever state variable changes , react usually re-renders the component."
-
-15. Reconciliation algorithm(React fiber)->
-React Fiber - Introduced in React -16
-
-16. Virtual DOM and Actual DOM
-
-Actual Dom-
-<div>
-<img src=""/>
-<div/>
-
-Virtual DOM- representation of Actual DOM
-
-The diff alogorithm finds out the differenec between old and new dom and re-render accordingly.
-
-
-useState returns an array, thats why we use array destructure.
- Way-1
- const [listData, setData] = useState(listOfRest);
-Way-2
-const arr = useState(listOfRest);
-const listObj = arr[0];
-const setlistOnj=arr[1];
-
+7.OPtional chaining

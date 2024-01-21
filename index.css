@@ -50,3 +50,8 @@
     margin:2%;
     height:180px;
 }
+
+.filter-btn{
+    margin :10px;
+    cursor: pointer;
+}

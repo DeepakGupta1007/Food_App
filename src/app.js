@@ -12,9 +12,11 @@ import Body from './components/Body';
 
 const AppLayout =()=>{
     return(
+        
         <div className='app'>
             <Header></Header>
             <Body></Body>
+            console.log(<Body></Body>);
         </div>
     )
 }

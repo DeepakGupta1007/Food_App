@@ -6,11 +6,7 @@ import { useState } from "react"
 
 
 const Body = ()=>{
-
-    
-const [listData, setData] = useState(listOfRest);
-
-
+    const [listData, setData] = useState(listOfRest);
     return (
     <div className="body">
         <div className='search'>

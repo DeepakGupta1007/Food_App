@@ -70,3 +70,30 @@ c. useRef()
 d. useCallback()
 e. useMemo()
 
+
+
+"Whenever state variable changes , react usually re-renders the component."
+
+15. Reconciliation algorithm(React fiber)->
+React Fiber - Introduced in React -16
+
+16. Virtual DOM and Actual DOM
+
+Actual Dom-
+<div>
+<img src=""/>
+<div/>
+
+Virtual DOM- representation of Actual DOM
+
+The diff alogorithm finds out the differenec between old and new dom and re-render accordingly.
+
+
+useState returns an array, thats why we use array destructure.
+ Way-1
+ const [listData, setData] = useState(listOfRest);
+Way-2
+const arr = useState(listOfRest);
+const listObj = arr[0];
+const setlistOnj=arr[1];
+

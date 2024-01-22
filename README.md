@@ -42,4 +42,10 @@ When component will be rendered successfully, after rendering it will quickly ca
 
 Swiggy API can be seen in network tab ad from there.
 
-7.OPtional chaining
+7. OPtional chaining
+
+8. Load a simmer UI for inital UI vefore making an API call
+
+9. Need of state variables
+
+10. Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)

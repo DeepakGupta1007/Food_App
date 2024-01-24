@@ -49,3 +49,11 @@ Swiggy API can be seen in network tab ad from there.
 9. Need of state variables
 
 10. Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
+
+
+
+11. Before fetching any url , one should include CORS proxy url to the url that you are going to fetch.
+This has a limit 50-60 API calls in a minute.
+
+
+

@@ -55,5 +55,23 @@ Swiggy API can be seen in network tab ad from there.
 11. Before fetching any url , one should include CORS proxy url to the url that you are going to fetch.
 This has a limit 50-60 API calls in a minute.
 
+Episode -7
+1. Never create state variables outside the component, Hooks can only called inside the functional components.
+2. One should create all state variables at the beginning of the body inside component
+3. Never declare state variables inside if else.
+This can create inconsistencies inside the code.
+4. Routing Library in react-
 
+To install it-
+npm install react-router-dom
 
+To work with this,need to import createBrowserRouter- It will create routing configuration for us.
+RouterProvider - It will provide the routing configuration to our app.
+Read doc
+
+5. What if url does not matches browser config?
+It will show :"404 Not Found"
+
+6. How can we handle errors?
+
+7. useRouteError can be used to read the error message.

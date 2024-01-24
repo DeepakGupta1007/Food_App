@@ -1,10 +1,16 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {  LOGO_URL } from "../utils/constants";
 
 
 const Header= ()=>{
 
-    const [BtnName,setBtnName]= useState("Login")
+    const [BtnName,setBtnName]= useState("Login");
+
+    useEffect(()=>{
+        console.log("UseEffect Called after every render of this component if there is not dependency array");
+        console.log("UseEffect called only once in case of empty dependency array,it will not called after evry rerender. ")
+        console.log("If there is anything in the dependency array, then it will only be called when dependency changes")
+    },[BtnName])
     return (
         <div className='header'>
             <div className='logo-container'>

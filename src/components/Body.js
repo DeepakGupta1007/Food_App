@@ -4,7 +4,7 @@ import listOfRest from "../utils/mockData"
 import { useState,useEffect } from "react"
 import Shimmer from "./Shimmer"
 
-
+import { Link } from "react-router-dom";
 
 
 const Body = ()=>{
@@ -19,11 +19,13 @@ const Body = ()=>{
              "https://www.swiggy.com/mapi/homepage/getCards?lat=28.6034877&lng=77.348575"
         );
         const json =await data.json();
-        setData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-        setOrgiginalData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-        //console.log(json?.data?.success?.cards)//.gridWidget?.gridElements?.infoWithStyle);
+
+        await setData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        await setOrgiginalData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        // console.log(json?.data?.success?.cards)//.gridWidget?.gridElements?.infoWithStyle);
     }
     //Can merge this in a single using ternary operator
+    // console.log(listData);
     if(listData.length===0){
         return (
         <Shimmer></Shimmer>
@@ -63,7 +65,9 @@ const Body = ()=>{
             </button>
         </div>
         <div className='restaurant-container'>
-            {listData.map(((data,index) => (<RestaurantCard resData={data} key={index}></RestaurantCard>)))}
+            {listData.map(((data,index) => (
+            <Link to ={"/restaurants/"+data.info.id}>
+            <RestaurantCard resData={data} key={index}></RestaurantCard></Link>)))}
         </div>
     </div>
     )

@@ -75,3 +75,22 @@ It will show :"404 Not Found"
 6. How can we handle errors?
 
 7. useRouteError can be used to read the error message.
+
+8. Outlet is a keyword use in routing when routing want to render only some component when going from one page to another.
+9. Children routes inside the app.
+
+10. We should never use Anchor tag in case of routing.
+11. HOw to navigate to a different page with reloading of the page.
+
+Link offers this facility , page don't get reloaded.
+
+ That's why they are know as single page application.
+
+ There are two types of routing, Server side routing and client side routing.
+ 
+ 12. Dynamic Routing:
+We need a speacial operator for this. ":" with the path specified and we can pass the parameter in that component .
+
+
+
+13. Link is a component provided by react-dom which is wrapper over anchor tag.

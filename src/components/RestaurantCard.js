@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constants";
 
 
@@ -8,9 +9,10 @@ const RestaurantCard=(data)=>{
         name,
         costForTwo,
         avgRating,
-        cuisines
+        cuisines,
+        id
     } = resData?.info;
-
+    console.log(data);
     return (
         <div className="res-card">
             <img className="restaurant-logo" 
@@ -21,6 +23,7 @@ const RestaurantCard=(data)=>{
  : "Unknown"}</h3>
             <h3>{avgRating} Stars</h3>
             <h3>{cuisines[0]},{cuisines[1]}</h3>
+            
         </div>
     )
 }

@@ -1,96 +1,93 @@
-Episode -6
 
-1. Monolith architecture-
-Earlier , apps was developed using monolithic architecture.
-Means- Authentication code, db connectivity, api, Ui all written inside one.
-If need a single change, we have to build and deploy this whole project.
-Thats costly.
+Episode-8
+1. Functional based components which we studied earlier, are modern way of creating components. While class based components are used at the very begining.
+2. Class based compnent is a normal js class while functional based component is a normal js function.
+3. How to create state variables in class based components.
+4. Earlier there used to be no hooks.
+5. Loading a class based component on a web page means creating an instance of that class.
+Best place to create and receiev prop and state in constructor.
+6. In functional component, BTS react creats a single state object of all state variables.
+7. (MMI)What are react component lifecycle methods in class based components?
+First constructor is called , then render is called
+8. React.Component can also be write as Component in {Component}
+9. In what order the functions will be called in class based componet approach-> render(),componentdidMOunt(),constructur().
 
-2. Microservice architecture
+10. componentdidMount() use cases->
+To make API calls , but why? Reason->Because we render initial UI first through render() and then make an API call.
 
-Everything in separate project-
-Like service for UI, SMS , Auth,Db connectivity
+11. In class based component, state variables are defined inside constructor.
 
-a. How do these services interact with each other?
-UI talks to backend which talks to db , auth.
+13. How lifecycle will work in case of two same component from parent class component.
 
-The react project that we are making is a microservice written in react. 
-One more advantage of using microservice that, each service can have separate language.
-All these services run on their specific ports.
-All these ports can be mapped to a domain.
-Example- /sms, /api
+Expected which is wrong-
 
-3. How react application will interact with the API s? This was covered in this episode.
+-Parent Cons.
+-Parent Rend.
+    -Child1 Cons.
+    -Child1 rend.
+    -Child1 Component did mount
 
-
-4. How to fetch data from API?
-There are two ways that can be followed-
-a. When app loads,make an api call , wait for data and when we will get the data then we render the UI.
-
-Loads-----> API Calls-----> Render UI
-b.As soon as page loads , we will just render the ui,now will make an api call as sson as we will get the result , we will now rerender the app from the data we will get from API.
-
-
-Page loads----->Render whatever we have----->API---->Re-render the Page
-Always prefer second approach,this gives better UX. Number of rendering a page occurs does not matter, because rect renders UI very fast.
-5. useEffect Hook- Based on second approach
-There are two arguments needed by useEffect(), that is arrow function and dependency array. Arrow function is a callback function.
-
-When component will be rendered successfully, after rendering it will quickly call callback function, if dependency array is empty.
-
-6. fetch() method is provided by JS Engine.
-
-Swiggy API can be seen in network tab ad from there.
-
-7. OPtional chaining
-
-8. Load a simmer UI for inital UI vefore making an API call
-
-9. Need of state variables
-
-10. Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
+    -Child2 Cons.
+    -Child2 rend.
+    -Child2 Component did mount
+-Parent component did mount
 
 
+Actual-
 
-11. Before fetching any url , one should include CORS proxy url to the url that you are going to fetch.
-This has a limit 50-60 API calls in a minute.
 
-Episode -7
-1. Never create state variables outside the component, Hooks can only called inside the functional components.
-2. One should create all state variables at the beginning of the body inside component
-3. Never declare state variables inside if else.
-This can create inconsistencies inside the code.
-4. Routing Library in react-
-
-To install it-
-npm install react-router-dom
-
-To work with this,need to import createBrowserRouter- It will create routing configuration for us.
-RouterProvider - It will provide the routing configuration to our app.
-Read doc
-
-5. What if url does not matches browser config?
-It will show :"404 Not Found"
-
-6. How can we handle errors?
-
-7. useRouteError can be used to read the error message.
-
-8. Outlet is a keyword use in routing when routing want to render only some component when going from one page to another.
-9. Children routes inside the app.
-
-10. We should never use Anchor tag in case of routing.
-11. HOw to navigate to a different page with reloading of the page.
-
-Link offers this facility , page don't get reloaded.
-
- That's why they are know as single page application.
-
- There are two types of routing, Server side routing and client side routing.
+   -Parent Cons.
+-Parent Rend.
+    -Child1 Cons.  
+    -Child1 rend.
+    -Child2 Cons.->renderPhase
+    -Child2 rend.
+    <=DOM updated in a single batch=>
+    -Child1 Component did mount
+    -Child2 Component did mount->commitPhase
+-Parent component did mount
  
- 12. Dynamic Routing:
-We need a speacial operator for this. ":" with the path specified and we can pass the parameter in that component .
+ 14. Must read ReactLifeCycle Diagram.
+ `https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/`
 
+ First constructor->render->DOM changes->componentDidMOunt()
 
+ React used to merge the DOM rendering of the sibling components.
 
-13. Link is a component provided by react-dom which is wrapper over anchor tag.
+ 15. Flow diagram when API call is made in componentdidMount()
+
+ -Constructor called
+ -Render(dummy data)
+ ****//HTML Dummy
+ -Component did Mount 
+ *****//API call
+ *****//Change in state variable
+
+-render(API data)
+-componentdidUpdate()
+
+16. useEffect is not equivalent to componentDidMount().
+These are not comparable.
+
+useEffect is called after every render if dependency array is not there.
+If it is empty , then it will be called once. ([]).
+
+In class based ,after evry render-ComponentdidUPdate() called.
+
+17. How to call API on state variable changes-
+componentDidMount(prevProps,prevState){
+    if(this.state.var_name = prevState.var_name){
+        //Call API
+    }
+}
+Reason behind dependency array, that thare are multiple conditions.
+
+Functional based components have enabled different API calls easier way, because of useEffect for two different with dependency array.
+Previouly need to add condition if else if else for component didUpdate.
+
+18. What is the use of  componentwillUnmount?
+This is called when another componet is rendered.
+
+19. Class based component has 5 lifecycle methds.
+20. why do we write super props and constructr rops?
+21.  Why useEffect cant be async but componentDidUpdate is .

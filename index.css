@@ -124,3 +124,49 @@
   .filter{
     display: flex;
   }
+
+
+
+  .user-card {
+    padding: 20px 20px;
+    margin: 20px 20px;
+    width: 300px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .user-card:hover {
+    transform: scale(1.05);
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #3498db;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .user-card-heading {
+    padding: 15px;
+    background-color: #3498db;
+  }
+  
+  .user-card-heading h2,
+  .user-card-heading h3 {
+    margin: 0;
+    color: #fff;
+  }
+  
+  .user-card-heading h2 {
+    font-size: 1.5em;
+  }
+  
+  .user-card-heading h3 {
+    font-size: 1.2em;
+  }
+  
+  /* Adjust other styles as needed */
+  

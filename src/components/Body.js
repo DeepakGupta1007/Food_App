@@ -5,6 +5,7 @@ import { useState,useEffect } from "react"
 import Shimmer from "./Shimmer"
 
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus"
 
 
 const Body = ()=>{
@@ -25,7 +26,14 @@ const Body = ()=>{
         // console.log(json?.data?.success?.cards)//.gridWidget?.gridElements?.infoWithStyle);
     }
     //Can merge this in a single using ternary operator
-    // console.log(listData);
+   const onlineStatus = useOnlineStatus();
+   if(onlineStatus===false){
+    return (
+        //Give a good game
+        <h1>Check your internet connection.</h1>
+    )
+   }
+   
     if(listData.length===0){
         return (
         <Shimmer></Shimmer>

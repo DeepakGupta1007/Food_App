@@ -1,46 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import Shimmer from './Shimmer';
 import { useParams } from 'react-router-dom';
-
+import useRestaurantMenu from '../utils/useRestaurantMenu';
 const RestaurantMenu = () =>{
-//To get the data from url
     const {resId} =useParams();
-    // 625790
-    const [data,setData]=useState([]);
-    const [jsonData,setjsonData]=useState("");
-    useEffect((()=>{
-        fetchMenu();
-    }),[]);
+    const jsonData = useRestaurantMenu(resId);//Custom hook
 
-    const fetchMenu = async()=>{
-        const dataF = await fetch("https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6034877&lng=77.348575&restaurantId="+resId+"&isMenuUx4=true&submitAction=ENTER");
-        const json = await dataF.json();
-
-        setjsonData(json);
-        setData(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-        // console.log(json);
-        // console.log(data);
-    }
-
-    if(data.length ===0){
+    if(jsonData === null){
         return (<Shimmer></Shimmer>);
     }
+    const data= jsonData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categories;
     const {name,costForTwoMessage,cuisines} =jsonData?.data?.cards[2]?.card?.card?.info;
     
-  return (
+    return (
 
-    <div className="menu">
-        <h1>{name}</h1>
-        <h2>{costForTwoMessage}</h2>
-        <p>{cuisines.join(',')}</p>
+        <div className="menu">
+            <h1>{name}</h1>
+            <h2>{costForTwoMessage}</h2>
+            <p>{cuisines.join(',')}</p>
 
-        <ul>
-            {data.map((cell)=>{
-                <li>Deepak+{cell?.card?.info?.name}</li>
-            })}
-        </ul>
-    </div>
-  );
+            <ul>
+                {data.map((cell)=>{
+                    <li>Deepak+{cell?.card?.info?.name}</li>
+                })}
+            </ul>
+        </div>
+    );
 }
 
 export default RestaurantMenu;

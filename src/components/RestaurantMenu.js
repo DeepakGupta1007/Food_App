@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Shimmer from './Shimmer';
 import { useParams } from 'react-router-dom';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
 import Rescategories from './Rescategories';
+
 const RestaurantMenu = () =>{
     const {resId} =useParams();
     const jsonData = useRestaurantMenu(resId);//Custom hook
@@ -22,7 +23,13 @@ const RestaurantMenu = () =>{
             <h2 className='font-semibold text-2xl'>{costForTwoMessage}</h2>
             <p className='font-semibold text-xl'>{cuisines.join(',')}</p>
             {categories.map((category,index)=>(
-                <Rescategories data={category?.card?.card} key={index} showItems={index==showIndex && true} disableThis={()=>setshowIndex(null)} setShowIndex={()=>setshowIndex(index)}></Rescategories>
+                <Rescategories 
+                data={category?.card?.card} 
+                key={index} 
+                showItems={index==showIndex && true} 
+                disableThis={()=>setshowIndex(null)} 
+                setShowIndex={()=>setshowIndex(index)}>
+                </Rescategories>
             ))}
         </div>
     );

@@ -1,30 +1,15 @@
 import React from "react";
-import { useState } from "react";
 import Rescategorycell from "./Rescategorycell";
+
 const Rescategories =({data,showItems,setShowIndex,disableThis})=>{
-    // console.log(data);
-        //Accordian Header
-        //Accordian Body
-    // const [isOpen, setIsOpen] = useState(showItems);
 
     const handleToggle = () => {
-        // setIsOpen(!isOpen);
-        // if(showItems && true){
         setShowIndex();
-        // }
-        // else{
-        //     disableThis();
-        // }
     };
     const cellData = data?.itemCards;
+    
     return (
         <div className="border rounded mx-auto my-5 w-9/12 ">
-        {/* <div
-            className="bg-gray-300 p-2 cursor-pointer"
-            onClick={handleToggle}
-        >
-            {data?.title} ({data?.itemCards.length})
-        </div> */}
         <div className="flex items-center justify-between p-4 bg-gray-300 text-black " onClick={handleToggle} >
             <h1 className="text-xl font-semibold">{data?.title} ({data?.itemCards.length})</h1>
             <span className="text-xl">&#9660;</span> {/* Unicode character for down arrow */}

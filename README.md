@@ -51,3 +51,7 @@ Accordian Data and According header.
 5. How to make controlled compnents?
 Controlling data from parent and change it value in child component.
 6. Lift state Up is a concept in react.
+
+7. Prop drilling->
+The phenomena of passing data to nested components.
+Visit - The problem in passing props

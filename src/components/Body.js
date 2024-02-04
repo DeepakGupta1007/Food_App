@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
-import RestaurantCard from "./RestaurantCard"
+import RestaurantCard,{WithPromotedLabel} from "./RestaurantCard"
 import listOfRest from "../utils/mockData"
 import { useState,useEffect } from "react"
 import Shimmer from "./Shimmer"
-
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus"
 
@@ -12,6 +11,9 @@ const Body = ()=>{
     const [listData, setData] = useState([]);
     const [originalData,setOrgiginalData]=useState([]);
     const [searchText,setsearchText]=useState("");
+    
+    const RestaurantCardWithLabel=WithPromotedLabel(RestaurantCard);
+
     useEffect(()=>{
         fetchData();        
     },[]);
@@ -23,7 +25,7 @@ const Body = ()=>{
 
         await setData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         await setOrgiginalData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-        // console.log(json?.data?.success?.cards)//.gridWidget?.gridElements?.infoWithStyle);
+        //.gridWidget?.gridElements?.infoWithStyle);
     }
     //Can merge this in a single using ternary operator
    const onlineStatus = useOnlineStatus();
@@ -39,9 +41,9 @@ const Body = ()=>{
         <Shimmer></Shimmer>
         );
     }
-    return (
+    // console.log(listData);
+    return (    
     <div className="body">
-        
         <div className='flex'>
             <div className='flex'>
                 <input type="text" className="block rounded-lg border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={searchText} onChange={(e)=>{
@@ -74,8 +76,10 @@ const Body = ()=>{
         </div>
         <div className='flex flex-wrap'>
             {listData.map(((data,index) => (
-            <Link to ={"/restaurants/"+data.info.id} key={data.info.id}>
-            <RestaurantCard resData={data} ></RestaurantCard></Link>)))}
+            <Link to ={"/restaurants/"+data.info.id} key={data.info.id}> 
+            {data.info.promoted ? (<RestaurantCardWithLabel resData={data}></RestaurantCardWithLabel>) :<RestaurantCard resData={data}></RestaurantCard>}
+            {/* <RestaurantCard resData={data} ></RestaurantCard> */}
+            </Link>)))}
         </div>
     </div>
     )

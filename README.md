@@ -36,3 +36,18 @@ npx - means initializing the tailwind css ,invoking.
 //We aretelling post css that we are using tailwind.
 
 It provides class for every sttyle.
+
+
+Episode -11
+1. Higher order components are the nomal js functions that takes component as an argument and return a enhanced version of it.
+//Higher order compoment
+
+//Input- RestaurantCard =>Output=> Promoted Restaurant cards
+2. Controlled and Uncontrolled components
+3. Accordian - a component along with expanded view
+Two things-
+Accordian Data and According header.
+4. virtual DOM is the representation of the react components.
+5. How to make controlled compnents?
+Controlling data from parent and change it value in child component.
+6. Lift state Up is a concept in react.

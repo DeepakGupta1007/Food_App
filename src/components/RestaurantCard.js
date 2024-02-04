@@ -10,9 +10,10 @@ const RestaurantCard=(data)=>{
         costForTwo,
         avgRating,
         cuisines,
-        id
+        id,
+        promoted
     } = resData?.info;
-    console.log(data);
+
     return (
         <div className="rounded-lg m-4 p-4 w-[230px] h-[350px] bg-gray-200 hover:bg-gray-400 hover:ease-in ">
             <img className="rounded-lg  w-[200px] h-[180px]" 
@@ -29,3 +30,15 @@ const RestaurantCard=(data)=>{
 }
 
 export default RestaurantCard;
+
+
+export const WithPromotedLabel =(RestaurantCard)=>{
+    return (props)=>{
+        return(
+            <div>
+                <label className="absolute bg-black text-white m-2 p-4 rounded-lg">Promoted</label>
+                <RestaurantCard {...props}/>
+            </div>
+        )
+    }
+}

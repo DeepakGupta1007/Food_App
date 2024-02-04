@@ -20,7 +20,7 @@ const About =()=>{
             <h1>About</h1>
             <h1>This is React Application.</h1>
             <User></User>
-            <UserClass name={"Deepak G"} location={"Delhi"}/> Passing parameter
+            {/* <UserClass name={"Deepak G"} location={"Delhi"}/> Passing parameter */}
         </div>
     )
 }

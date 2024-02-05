@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import RestaurantCard,{WithPromotedLabel} from "./RestaurantCard"
 import listOfRest from "../utils/mockData"
 import { useState,useEffect } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus"
-
+import UserContext from "../utils/UserContext"
 
 const Body = ()=>{
     const [listData, setData] = useState([]);
@@ -13,7 +13,7 @@ const Body = ()=>{
     const [searchText,setsearchText]=useState("");
     
     const RestaurantCardWithLabel=WithPromotedLabel(RestaurantCard);
-
+    const {setUserInfo} =useContext(UserContext);
     useEffect(()=>{
         fetchData();        
     },[]);
@@ -51,14 +51,16 @@ const Body = ()=>{
                 }}/>
                 <button className="px-4  bg-green-200 mx-4 rounded-lg" onClick={()=>{
                     //Filter the restaurant cards and update theUI
-                    console.log(searchText);
+                    // console.log(searchText);
                     if(searchText===""){
-                        setData(originalData);
+                        
+                        // setData(originalData);
                     }
                     else{
-                    setData(originalData.filter(
-                        (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                    ));
+                        setUserInfo(searchText);
+                    // setData(originalData.filter(
+                    //     (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                    // ));
                     }
                 }}>Search</button>
             </div>

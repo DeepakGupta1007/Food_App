@@ -3,24 +3,25 @@ import User from "./User";
 import UserClass from "./UserClass";
 const About =()=>{
     useEffect(()=>{
-        console.log("useEffect Caled")
+        // console.log("useEffect Caled")
         const timer=setInterval(()=>{
-            console.log("Deepak Called About");
+            // console.log("Deepak Called About");
         },1000)
 
         return ()=>{
-            console.log("useEffect unMounted")
+            // console.log("useEffect unMounted")
             //Called for unbounding the component
             clearInterval(timer);
         };
     },[]);
-    console.log("Rendered About component");
+    // console.log("Rendered About component");
     return(
         <div>
             <h1>About</h1>
             <h1>This is React Application.</h1>
             <User></User>
-            {/* <UserClass name={"Deepak G"} location={"Delhi"}/> Passing parameter */}
+
+            <UserClass name={"Deepak G"} location={"Delhi"}/> 
         </div>
     )
 }

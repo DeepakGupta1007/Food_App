@@ -14,7 +14,7 @@ const RestaurantMenu = () =>{
     }
     const data= jsonData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards;
     const categories = data.filter(c=>c?.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
-    console.log(categories);
+    // console.log(categories);
     const {name,costForTwoMessage,cuisines} =jsonData?.data?.cards[2]?.card?.card?.info;
     return (
 

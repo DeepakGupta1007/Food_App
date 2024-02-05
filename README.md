@@ -55,3 +55,16 @@ Controlling data from parent and change it value in child component.
 7. Prop drilling->
 The phenomena of passing data to nested components.
 Visit - The problem in passing props
+8. Use of context->
+
+Using createContext to create a structure.
+Using useContext and passing that context ,in that so that we can get the value anywhere.
+useContext cannot be applied in class based components.
+for class based components-
+UserContext.Consumer can be used. Refer userclass.
+
+ </UserContext.Provider> This is used t set the value in the user context.
+
+ 9. To do, can i use Context Provider.
+
+ 

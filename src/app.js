@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { lazy,Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import "/index.css"
@@ -9,22 +9,37 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
-
+import UserContext from './utils/UserContext';
 
 //Here we will not import Grocry component , instead of this we will do lazy loading.
 //Or we will do on demand loading.
 const Grocery =lazy(()=>
     import('./components/Grocery'));
 //You will get a new js file in network.
-function AppLayout() {
-    return (
 
+function AppLayout() {
+    const [userInfo,setUserInfo]=useState("");
+    useEffect(()=>{
+        const data={
+            name:"Deepak Gupta",
+        }
+
+        setUserInfo(data.name);
+
+    },[])
+    return (
+        <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
         <div className='app'>
+        <UserContext.Provider value={{loggedInUser:"Rishabh"}}>
             <Header></Header>
+        </UserContext.Provider>
             <Outlet></Outlet>
         </div>
+        </UserContext.Provider>
     );
 }
+
+
 
 const appRouter = createBrowserRouter([
     {

@@ -10,8 +10,6 @@ const RestaurantCard=(data)=>{
         costForTwo,
         avgRating,
         cuisines,
-        id,
-        promoted
     } = resData?.info;
 
     return (

@@ -3,6 +3,7 @@ import {  LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header= ()=>{
     //Using context
@@ -10,11 +11,12 @@ const Header= ()=>{
 
     const [BtnName,setBtnName]= useState("Login");
     const onlineStatus =useOnlineStatus();
-    useEffect(()=>{
-        // console.log("UseEffect Called after every render of this component if there is not dependency array");
-        // console.log("UseEffect called only once in case of empty dependency array,it will not called after evry rerender. ")
-        // console.log("If there is anything in the dependency array, then it will only be called when dependency changes")
-    },[BtnName])
+    
+    //We are using selector to subscribe our store. A selector is a hook
+    const cartItems =useSelector((store)=>store.cart.items);
+    console.log(cartItems);
+
+
     return (
         <div className='flex justify-between bg-purple-500 m-2 sm:bg-green-50  lg:bg-red-100'>
             <div className='w-20 '>
@@ -38,8 +40,8 @@ const Header= ()=>{
                     <li className="px-2">
                         <Link to ="/contact">  Contact Us </Link>
                     </li>
-                    <li className="px-2">
-                        Cart
+                    <li className="px-2 bold">
+                        <Link to ="/cart">  Cart {cartItems.length} </Link>
                     </li>
                     <li>
                         {loggedInUser}

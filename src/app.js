@@ -10,6 +10,9 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
 import UserContext from './utils/UserContext';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import Cart from './components/Cart';
 
 //Here we will not import Grocry component , instead of this we will do lazy loading.
 //Or we will do on demand loading.
@@ -28,14 +31,14 @@ function AppLayout() {
 
     },[])
     return (
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
         <div className='app'>
-        <UserContext.Provider value={{loggedInUser:"Rishabh"}}>
             <Header></Header>
-        </UserContext.Provider>
             <Outlet></Outlet>
         </div>
         </UserContext.Provider>
+        </Provider>
     );
 }
 
@@ -57,6 +60,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "contact",
                 element: <Contact/>
+            },
+            {
+                path: "/cart",
+                element: <Cart/>
             },
             {
                 path: "/grocery",

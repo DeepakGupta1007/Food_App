@@ -1,7 +1,19 @@
 import React from "react";
 import { CDN_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 const Rescategorycell=({data})=>{
-    
+    console.log("ABC");
+    console.log(data);
+    const dispath = useDispatch()
+    const handleAddItems =(data)=>{
+        //dispatch an action
+        dispath(addItem(data));
+
+        //This pizza is an action.payload.
+
+        //Redux will create an object, and pass this as a paramter in payload.
+    }
     return (
         <div className="border rounded p-4 mb-4 flex bg-white hover:bg-gray-100 w-11/12 m-auto">
             <div className="flex-1 text-left">
@@ -19,7 +31,7 @@ const Rescategorycell=({data})=>{
             {/* Additional styling for buttons */}
             <div className="flex items-center justify-between">
                 <div>
-                <button className="bg-black-500 text-white px-2 py-1 rounded">
+                <button className="bg-green-500 text-black px-2 py-1 rounded" onClick={()=>handleAddItems(data)}>
                     Add
                 </button>
                 </div>

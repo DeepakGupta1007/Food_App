@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import RestaurantCard,{WithPromotedLabel} from "./RestaurantCard"
 import listOfRest from "../utils/mockData"
-import { useState,useEffect } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus"
@@ -48,7 +47,11 @@ const Body = ()=>{
     <div className="body">
         <div className='flex'>
             <div className='flex'>
-                <input type="text" className="block rounded-lg border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={searchText} onChange={(e)=>{
+                <input type="text" 
+                className="block rounded-lg border-0 px-3.5 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" 
+                value={searchText} 
+                data-testid='search-input'
+                onChange={(e)=>{
                     setsearchText(e.target.value);
                 }}/>
                 <button className="px-4  bg-green-200 mx-4 rounded-lg" onClick={()=>{
@@ -66,7 +69,9 @@ const Body = ()=>{
                     }
                 }}>Search</button>
             </div>
-            <button className="px-4  bg-green-200 mx-4 rounded-lg" 
+            <button 
+            className="px-4  bg-green-200 mx-4 rounded-lg" 
+            data-testid='top-rated'
             onClick={()=>{
                 console.log("button clicked");
                 //filter logic here

@@ -36,3 +36,9 @@ __text__  Two underscore at the begining and at the end Known as dunder.
 9. Babel preset is helping testing library to convert into html code.
 
 10. Testcases can be divided into describe where a finite number of test cases are passed.
+
+11. Watch test is useful any change in test.js file willresult in return.
+
+12. There are two methods inside describe in esting , -
+beforeEach- Want to run something before eachtest
+beforeAll- Want to do something before All

@@ -19,12 +19,14 @@ const Body = ()=>{
     },[]);
     const fetchData = async ()=>{
         const data = await fetch(
-             "https://www.swiggy.com/mapi/homepage/getCards?lat=28.6034877&lng=77.348575"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6034877&lng=77.348575"
+            //  "https://www.swiggy.com/mapi/homepage/getCards?lat=28.6034877&lng=77.348575"
         );
         const json =await data.json();
 
-        await setData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-        await setOrgiginalData(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        await setData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(data);
+        await setOrgiginalData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         //.gridWidget?.gridElements?.infoWithStyle);
     }
     //Can merge this in a single using ternary operator
@@ -57,10 +59,10 @@ const Body = ()=>{
                         // setData(originalData);
                     }
                     else{
-                        setUserInfo(searchText);
-                    // setData(originalData.filter(
-                    //     (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                    // ));
+                        // setUserInfo(searchText);
+                    setData(originalData.filter(
+                        (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                    ));
                     }
                 }}>Search</button>
             </div>

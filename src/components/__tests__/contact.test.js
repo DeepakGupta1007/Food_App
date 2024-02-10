@@ -1,6 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import Contact from "../Contact";
 import "@testing-library/jest-dom"
+
+
+describe( "Contact Us page Test Case",()=>{
 test('Should load contact component.', () => { 
     
     //This will render to the JSDOM
@@ -45,7 +48,7 @@ test("Should load two input boxes or not",()=>{
 })
 
 
-test('Should load contact component.', () => { 
+it('Should load contact component.', () => { 
     
     //This will render to the JSDOM
     render(<Contact></Contact>);
@@ -55,7 +58,9 @@ test('Should load contact component.', () => {
 
     
 });
-
+});
 
 //Beauty of jest - whenever somthing fails , it will show you a node
 //What is role- role can be button, heading,para
+
+//There can be describe inside describe also.,tectcan be renamed as it also. No diff between test and it.

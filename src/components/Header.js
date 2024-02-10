@@ -14,7 +14,7 @@ const Header= ()=>{
     
     //We are using selector to subscribe our store. A selector is a hook
     const cartItems =useSelector((store)=>store.cart.items);
-    console.log(cartItems);
+    // console.log(cartItems);
 
 
     return (

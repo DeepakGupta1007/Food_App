@@ -11,7 +11,6 @@ const Contact = () => {
       email: e.target.elements.email.value,
       message: e.target.elements.message.value,
     };
-    
   };
   return (
     <div className="container mx-auto mt-8">

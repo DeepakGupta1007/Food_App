@@ -12,10 +12,12 @@ const RestaurantMenu = () =>{
     if(jsonData === null){
         return (<Shimmer></Shimmer>);
     }
-    const data= jsonData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+    console.log(jsonData);
+    const data= jsonData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
     const categories = data.filter(c=>c?.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    // console.log(data);
     // console.log(categories);
-    const {name,costForTwoMessage,cuisines} =jsonData?.data?.cards[2]?.card?.card?.info;
+    const {name,costForTwoMessage,cuisines} =jsonData?.data?.cards[0]?.card?.card?.info;
     return (
 
         <div className="text-center">

@@ -3,20 +3,20 @@ import Shimmer from './Shimmer';
 import { useParams } from 'react-router-dom';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
 import Rescategories from './Rescategories';
+import { resMenu } from './mocks/resMenu';
 
 const RestaurantMenu = () =>{
     const {resId} =useParams();
-    const jsonData = useRestaurantMenu(resId);//Custom hook
+    const jsonData = resMenu;//useRestaurantMenu(resId);//Custom hook
     const [showIndex,setshowIndex]=useState(null);
 
     if(jsonData === null){
         return (<Shimmer></Shimmer>);
     }
-    console.log(jsonData);
+    
     const data= jsonData?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
     const categories = data.filter(c=>c?.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
-    // console.log(data);
-    // console.log(categories);
+   
     const {name,costForTwoMessage,cuisines} =jsonData?.data?.cards[0]?.card?.card?.info;
     return (
 

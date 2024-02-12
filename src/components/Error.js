@@ -1,8 +1,8 @@
 import React from 'react'
 import { useRouteError } from 'react-router-dom'
 function Error() {
-    const err = useRouteError();
-    // console.log(err);
+  const err = useRouteError();
+  
   return (
     <div>Oops !! Something went wrong. {err.data}</div>
   )

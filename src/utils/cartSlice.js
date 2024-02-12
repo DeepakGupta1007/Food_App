@@ -9,7 +9,6 @@ const cartSlice = createSlice({
         //We are mutating the state over here.
         //Actually modifies the data inside the slices
         addItem :(state,action)=>{
-            console.log(current(state));
             state.items.push(action.payload);
         },
         removeItem:(state,action)=>{

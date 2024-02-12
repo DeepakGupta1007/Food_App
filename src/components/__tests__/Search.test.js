@@ -19,19 +19,19 @@ global.fetch = jest.fn(()=>{
 describe("Test cases of main page",()=>{
 
     beforeEach(()=>{
-        console.log("Before Each Called");
+        // console.log("Before Each Called");
     })
 
     afterEach(()=>{
-        console.log("After Each called");
+        // console.log("After Each called");
     })
 
     beforeAll(()=>{
-        console.log("Before All called");
+        // console.log("Before All called");
     })
 
     afterAll(()=>{
-        console.log("After ALl Called");
+        // console.log("After ALl Called");
     })
 
 //How to test for the async request.

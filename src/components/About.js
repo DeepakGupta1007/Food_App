@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import User from "./User";
 import UserClass from "./UserClass";
+
 const About =()=>{
     useEffect(()=>{
         // console.log("useEffect Caled")

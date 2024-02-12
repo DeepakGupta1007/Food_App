@@ -3,8 +3,6 @@ import { CDN_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 const Rescategorycell=({data})=>{
-    console.log("ABC");
-    console.log(data);
     const dispath = useDispatch()
     const handleAddItems =(data)=>{
         //dispatch an action
@@ -15,7 +13,9 @@ const Rescategorycell=({data})=>{
         //Redux will create an object, and pass this as a paramter in payload.
     }
     return (
-        <div className="border rounded p-4 mb-4 flex bg-white hover:bg-gray-100 w-11/12 m-auto">
+        <div 
+        data-testid='categories-menu'
+        className="border rounded p-4 mb-4 flex bg-white hover:bg-gray-100 w-11/12 m-auto">
             <div className="flex-1 text-left">
             <h2 className="text-xl font-semibold mb-2">
                 {data?.card?.info?.name}

@@ -14,8 +14,6 @@ const Header= ()=>{
     
     //We are using selector to subscribe our store. A selector is a hook
     const cartItems =useSelector((store)=>store.cart.items);
-    // console.log(cartItems);
-
 
     return (
         <div className='flex justify-between bg-purple-500 m-2 sm:bg-green-50  lg:bg-red-100'>

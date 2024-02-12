@@ -19,14 +19,12 @@ const Body = ()=>{
     const fetchData = async ()=>{
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6034877&lng=77.348575"
-            //  "https://www.swiggy.com/mapi/homepage/getCards?lat=28.6034877&lng=77.348575"
         );
+        //  "https://www.swiggy.com/mapi/homepage/getCards?lat=28.6034877&lng=77.348575"
         const json =await data.json();
 
         await setData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log(data);
         await setOrgiginalData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        //.gridWidget?.gridElements?.infoWithStyle);
     }
     //Can merge this in a single using ternary operator
    const onlineStatus = useOnlineStatus();
@@ -42,7 +40,7 @@ const Body = ()=>{
         <Shimmer></Shimmer>
         );
     }
-    // console.log(listData);
+    
     return (    
     <div className="body">
         <div className='flex'>
@@ -56,16 +54,16 @@ const Body = ()=>{
                 }}/>
                 <button className="px-4  bg-green-200 mx-4 rounded-lg" onClick={()=>{
                     //Filter the restaurant cards and update theUI
-                    // console.log(searchText);
+                
                     if(searchText===""){
                         
                         // setData(originalData);
                     }
                     else{
                         // setUserInfo(searchText);
-                    setData(originalData.filter(
-                        (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                    ));
+                        setData(originalData.filter(
+                            (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                        ));
                     }
                 }}>Search</button>
             </div>
@@ -87,7 +85,6 @@ const Body = ()=>{
             {listData.map(((data,index) => (
             <Link to ={"/restaurants/"+data.info.id} key={data.info.id}> 
             {data.info.promoted ? (<RestaurantCardWithLabel resData={data}></RestaurantCardWithLabel>) :<RestaurantCard resData={data}></RestaurantCard>}
-            {/* <RestaurantCard resData={data} ></RestaurantCard> */}
             </Link>)))}
         </div>
     </div>

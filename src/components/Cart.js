@@ -8,12 +8,12 @@ const Cart =()=>{
     const handleClick=()=>{
         dispatch(clearCart());
     }
-    //here we are  subsribing to a single store only. We can subscribe whole store also but it 
+    //here we are  subscribing to a single store only. We can subscribe whole store also but it 
     //is not effiecient. Because when anything changes inside the store, my cart component will get update for the whole 
     //store which has nothing to do with the the other slices.Always subscribe to the small
     //part of the store.
     const cartItems = useSelector((store)=>store.cart.items);
-    console.log("Deepak");
+    
     return (
         <div className="text-center m-4 p-10">
         <h1 className="text-2xl font-bold">Cart</h1>

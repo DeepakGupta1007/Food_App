@@ -7,7 +7,7 @@ import { resMenu } from './mocks/resMenu';
 
 const RestaurantMenu = () =>{
     const {resId} =useParams();
-    const jsonData = resMenu;//useRestaurantMenu(resId);//Custom hook
+    const jsonData = useRestaurantMenu(resId);//Custom hook
     const [showIndex,setshowIndex]=useState(null);
 
     if(jsonData === null){
